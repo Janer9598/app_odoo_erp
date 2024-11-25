@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_task_form_inherit_branch" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.branch</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="check_pending_prs"
+                        string="Verificar PR Pendientes"
+                        type="object"
+                        class="oe_highlight"/>
+                <button name="action_create_pr"
+                        string="Crear Pull Request"
+                        type="object"
+                        class="btn-primary"
+                        attrs="{'invisible': [('has_pr_pending', '=', True)]}"/>
+            </xpath>
+            <!-- Insertamos el campo debajo del campo "Project" -->
+            <xpath expr="//group[group]" position="after">
+                <group string="Realizar PULL REQUEST">
+                    <field name="branch_id" attrs="{'readonly': [('has_pr_pending', '=', True)]}"/>
+                    <field name="branch_destination_id" attrs="{'readonly': [('has_pr_pending', '=', True)]}"/>
+                    <field name="title" attrs="{'readonly': [('has_pr_pending', '=', True)]}"/>
+                    <field name="has_pr_pending"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

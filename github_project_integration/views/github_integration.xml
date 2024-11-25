@@ -1,0 +1,52 @@
+<odoo>
+    <!-- Acción para acceder a la vista -->
+    <record id="action_github_integration" model="ir.actions.act_window">
+        <field name="name">Integraciones con GitHub</field>
+        <field name="res_model">github.integration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Administra las integraciones con repositorios de GitHub.
+            </p>
+        </field>
+    </record>
+
+    <!-- Vista de lista (tree) -->
+    <record id="view_github_integration_tree" model="ir.ui.view">
+        <field name="name">github.integration.tree</field>
+        <field name="model">github.integration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Nombre del Repositorio"/>
+                <field name="repository_url" string="URL del Repositorio"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario (form) -->
+    <record id="view_github_integration_form" model="ir.ui.view">
+        <field name="name">github.integration.form</field>
+        <field name="model">github.integration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object"
+                            name="fetch_repository_data"
+                            string="Traer Datos del Repositorio"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="repository_url"/>
+                        <field name="access_token" password="True"/>
+                        <field name="project_id" readonly="True"/>
+                    </group>
+                    <group>
+                        <field name="repository_data" readonly="1" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

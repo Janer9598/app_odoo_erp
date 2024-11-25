@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_github_integration_root"
+                  name="GitHub"/>
+
+        <menuitem id="menu_github_configuration"
+                  name="Configuración"
+                  parent="menu_github_integration_root"
+                  sequence="1"/>
+        <menuitem id="menu_github_integration"
+                  name="Proyectos"
+                  parent="menu_github_configuration"
+                  action="github_project_integration.action_github_integration"
+                  sequence="1"/>
+        <menuitem id="menu_github_branch"
+                  name="Ramas"
+                  parent="menu_github_configuration"
+                  action="github_project_integration.action_github_branch"
+                  sequence="2"/>
+    </data>
+</odoo>
