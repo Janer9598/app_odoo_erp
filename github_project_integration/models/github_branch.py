@@ -25,7 +25,7 @@ class ProjectTask(models.Model):
     title = fields.Char(string='Titulo del PR')
     def check_pending_prs(self):
         """
-        Método para verificar si las ramas asociadas a las tareas tienen PR pendientes.
+        Método para verificar si las ramas asociadas a las tareas tienen PR pendientes..
         """
         for record in self:
             if not record.branch_id:
